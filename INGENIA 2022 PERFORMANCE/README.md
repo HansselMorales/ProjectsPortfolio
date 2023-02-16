@@ -1,7 +1,7 @@
 # INGENIA EDA
 In this project, I explored data of a company called Ingenia. I was asked to find trends in the company's services-assignation behavior. It was a problem for the company the fact that they didn't have any information of why there were drastic variations in 2022 revenue.
 
-Using Python libraries such as matplotlib, seaborn, and pandas, as well as Microsoft Excel, I cleaned, visualized and analyzed the data to perform various tasks. Given the existing conditions, I decided to analyze the trends of revenue per each 2022's quarter.
+Using Python libraries such as matplotlib, seaborn, and pandas, as well as Microsoft Excel, I cleaned, transformed, visualized and analyzed the data to perform various tasks. Given the existing conditions, I decided to analyze the trends of revenue per each 2022's quarter.
 
 # INSIGHTS
 
