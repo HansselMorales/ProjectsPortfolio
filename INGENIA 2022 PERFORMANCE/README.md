@@ -1,7 +1,9 @@
-# MEDICAL EDA
+# INGENIA EDA
 In this project, I explored data of a company called Ingenia. I was asked to find trends in the company's services-assignation behavior. It was a problem for the company the fact that they didn't have any information of why there were drastic variations in 2022 revenue.
 
-Using Python libraries such as matplotlib, seaborn, and pandas, as well as Microsoft Excel, I cleaned, visualized and analyzed the data to perform various tasks, which led me to the following insights:
+Using Python libraries such as matplotlib, seaborn, and pandas, as well as Microsoft Excel, I cleaned, visualized and analyzed the data to perform various tasks. Given the existing conditions, I decided to analyze the trends of revenue per each 2022's quarter.
+
+# INSIGHTS
 
 1. We were parting from the point where we could see that the Revenue-per-Quarter had an up-and-down trend.
 
@@ -11,7 +13,7 @@ Using Python libraries such as matplotlib, seaborn, and pandas, as well as Micro
 
 ![image](https://user-images.githubusercontent.com/122589585/219265732-29d2f29d-9999-404d-83f1-d446c20c5257.png)
 
-3. The following graphic showed that our level of approved services follows the same trend as the level of requested services. One highlight of this graphic is that in the Q2-Q3 period, there was a high increment on requested services. However, that increment was too low on approved services.
+3. The following graphic showed that the level of approved services followed the same trend as the level of requested services. One highlight of this graphic was that in the Q2-Q3 period, there was a high increment on requested services. However, that increment was too low on approved services.
 
 ![image](https://user-images.githubusercontent.com/122589585/219265930-59529ba5-5a51-4211-985c-4d40ad13254a.png)
 
@@ -32,5 +34,5 @@ Using Python libraries such as matplotlib, seaborn, and pandas, as well as Micro
 After having analyzed the data, the next conclusions were found:
 
 1. INFRA was the type of service with the most revenue obtained.
-2. INFRA’s quarters-trend is the same as Revenue-per-Quarter’s trend. Therefore, there’s solid evidence that the more INFRA services approved, the better level of Revenue-per-Quarter obtained.
+2. INFRA’s quarters-trend is the same as Revenue-per-Quarter’s trend. Therefore, there’s solid evidence to aseverate that the more INFRA services approved, the better level of Revenue-per-Quarter obtained.
 3. Vargas was likely the reason why the quarter revenue varies the way it's shown on the Revenue-per-Quarter graphic.
