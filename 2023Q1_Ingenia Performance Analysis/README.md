@@ -1,5 +1,5 @@
 # Ingenia Data Analysis (2023 Q1)
-The goal of this project was to determine how the current company's performance is doing. In order to do that, a comparison between 2022's performance and the current one was made.
+The goal of this project was to determine how the current company's performance is going. In order to do that, a comparison between 2022's performance and the current one was made.
 Results show that 2023 Q1's revenue has largely overcome 2022 Q1's revenue. In addition, a highlight of this conclusion is that the current performance has been achieved by running a strategy based on what was predicted by the analysis run last year.
 
 ### INSIGHTS
