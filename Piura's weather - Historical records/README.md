@@ -1,7 +1,7 @@
 # Piura's weather - Historical Records Project
 This project aimed to explore the historical weather records of Piura, which is a city located in Peru. This city is known as one of the hottest cities in Peru so evaluating the behavior of its historical records of temperature was an interesting challenge. Obtaining the data from SENAMHI, which is the official Peruvian source for meteorological information, I converted the CSV file into an SQL file using an external platform. Following this, I queried the SQL file to extract insights and finally, created a visualization to represent the key findings of the analysis.
 
-Check out these exciting findings that I came across! Here are some of the most relevant ones
+Check out these exciting findings that I came across! Here are some of the most relevant ones:
 
 
 ### 1. What is the maximum temperature ever registered?
