@@ -2,11 +2,11 @@
 This is my portfolio, which contains my Data Analysis Projects using Python, SQL, Excel, Tableau, and Power BI.
 
 ## About me
-My name is Hanssel Morales. I am a Civil Engineer turned Data Analyst. This journey started when, in my Civil Engineer position, I used to spend several hours analyzing Excel sheets to find ways to improve the operational performance of the company. I did that by analyzing indicators such as Conversation Rate and others that were related to construction projects. That led me to realize that I had a strong desire to always analyze data, deciding afterward to switch my career and become a Data Analyst. I can tell it was a decision I do not regret having taken at all. 
+My name is Hanssel Morales and I am a Civil Engineer turned Data Analyst. While working as a Civil Engineer, I often spent hours analyzing Excel sheets to improve the operational performance of the company. I analyzed various indicators such as conversion rates and others related to construction projects. This made me realize my strong desire to always analyze data. As a result, I decided to switch my career and become a Data Analyst. I can confidently say that it was a decision I do not regret having taken. 
 
 
 ## My abilities
-I can use Python (Jupiter Notebooks), SQL, Excel, and Tableau/Power BI to analyze data. I'm an analytical, goal-oriented, assertive person with technical and interpersonal skills to find solutions when needed. Also, I love facing new challenges, so I love analyzing data since doing it is facing new challenges every single day.
+I am proficient in using Python (Jupyter Notebooks), SQL, Excel, Tableau, and Power BI to analyze data. I possess analytical skills, a goal-oriented mindset, and an assertive personality, along with strong technical and interpersonal skills required to find solutions when needed. I enjoy taking up new challenges, and analyzing data is one of my favorite activities, as it presents me with new challenges every day.
 
 
 ## Skillset and Data Stack
