@@ -53,3 +53,16 @@ when year between 2000 and 2009 then '2000s'
 else '2010s' end as decade
 from piura_weather) a
 group by decade;
+
+-- Average Max, min temp and precipitation per decade
+select decade, round(avg(max_temp), 2) avg_max_decade_temp, round(avg(min_temp), 2) avg_min_decade_temp,
+round(avg(precipitation), 2) avg_prec
+from
+(select *, case
+when year between 1970 and 1979 then '70s'
+when year between 1980 and 1989 then '80s'
+when year between 1990 and 1999 then '90s'
+when year between 2000 and 2009 then '2000s'
+else '2010s' end as decade
+from piura_weather) a
+group by decade;
