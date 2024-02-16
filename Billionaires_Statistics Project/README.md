@@ -1,7 +1,7 @@
 # Unveiling the World's Wealth: A Deep Dive into Billionaire Billionaires
 This project unveils the staggering collective wealth of the world's billionaires, delving into regional distributions, industry powerhouses, and the stark gender gap that persists. Up next, you will find the staggering figures, intriguing trends, and the stark socio-economic implications they unveil.
 
-![image](https://github.com/HansselMorales/ProjectsPortfolio/assets/122589585/9a1d9654-e1f0-40fa-be45-0db58a2bac64)
+![image](https://github.com/HansselMorales/ProjectsPortfolio/assets/122589585/95750ed6-80cc-44df-b962-5702dc8c6af6)
 
 
 ### A Sea of Wealth:
