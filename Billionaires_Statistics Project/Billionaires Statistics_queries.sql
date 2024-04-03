@@ -1,3 +1,7 @@
+-- SQL Analysis
+
+------------------------------------------------------------------------------------------------------
+
 -- Wealth of different age groups: billionaires who are between 60 and 69 YO are the most wealthy ones
 -- Nonetheless, the group of billionaires with an age over 80 YO have the greatest average wealth
 select case
