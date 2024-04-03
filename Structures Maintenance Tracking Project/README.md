@@ -5,7 +5,7 @@ Here's a sneak peek at what the data reveals:
 
 
 ### Site Visits:
-4 out of 9 projects, 2 per group, had a flurry of activity with 4 visits, being above the average number of visits. Nonetheless, the projected number of visits was only 2. It seems there are a few things to fix there.
+4 out of 9 projects, 2 per group, had a flurry of activity with 4 visits, being above the average number of visits. Nonetheless, the projected number of visits was only 2 (only 2 projects met that target, one per group). It seems there are a few things to fix there.
 
 ### Reporting:
 Reports are making their way to the client. Nonetheless, there was a global delay of 29 days against the projected time of delivery – could there be unforeseen challenges for the next upcoming project?
