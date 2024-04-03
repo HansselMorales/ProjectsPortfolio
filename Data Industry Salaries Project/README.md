@@ -1,6 +1,6 @@
 # Trends in the Thriving Data Professions Landscape
-The data industry is becoming one of the most profitable. This is because more and more companies are realizing the immense power of the data they generate. As a result, the demand for data professionals is growing rapidly, as are the salaries that companies are willing to pay to have their data accurately analyzed.
-In this analysis I made of a Kaggle survey dataset, there is a breakdown of the key insights I discovered across various data professions and specifically for Data Scientists (the most profitable):
+The data industry is becoming one of the most profitable sectors. This is because more and more companies are realizing the immense power of the data they generate. As a result, the demand for data professionals is growing rapidly, as are the salaries that companies are willing to pay to have their data accurately analyzed.
+In this analysis I made of a Kaggle survey dataset, there is a breakdown of the key insights I discovered across various data professions and specifically for Data Scientists (the most profitable one):
 
 ### General Dashboard
 
