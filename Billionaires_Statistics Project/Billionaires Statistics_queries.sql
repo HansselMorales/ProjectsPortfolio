@@ -21,14 +21,14 @@ from billionaires_dataset
 group by age_group with rollup
 order by group_wealth desc;
 
--- Billionaires per country and category (field)
+-- Billionaires per country and industry (US is the country with the most billionaires' wealth, Tech sector is the one with the most billionaires wealth)
 select coalesce(country, 'No data') country,
 coalesce(category, 'Total') category, count(*) billionaires, sum(finalWorth) wealth
 from billionaires_dataset
 group by country, category with rollup
 order by country, wealth desc;
 
--- Wealth per gender
+-- Wealth per gender (Male wealth represents almost 88% of the total billionaires' wealth, there is an immense gap between genders)
 select coalesce(gender, 'Total') gender, sum(finalWorth) wealth, count(*) billionaires, avg(finalWorth) average_wealth
 from billionaires_dataset
 group by gender with rollup;
@@ -39,31 +39,32 @@ from billionaires_dataset
 group by category with rollup
 order by wealth desc;
 
--- Categories with the biggest billionaires' wealth per country
+-- Categories with the biggest billionaires' wealth per country: France has the wealthiest individual (Fashion & Retail)
 select country, category, max(finalWorth) biggest_wealth
 from billionaires_dataset
 group by country
 order by biggest_wealth desc;
 
--- Share of the total wealth that the 10 most wealthy billionaires represent
+-- Share of the total wealth that the 10 most wealthy billionaires represent: 9.61% of the total billionaires' wealth
 select round(((select sum(finalWorth)
 from billionaires_dataset
 where ranking <= 10)/sum(finalWorth))*100, 2) 'share_of_total_wealth'
 from billionaires_dataset;
 
--- Wealth per country
+-- Wealth per country (Top 5: United States, China, India, France, Germany)
 select country, sum(finalWorth) total_wealth
 from billionaires_dataset
 group by country
 order by total_wealth desc;
 
--- Billionaires' preferred states to live in (US territory only)
+-- Billionaires' preferred states to live in (US territory only): California, 178 individuals
 select coalesce(state, 'Total residents') state, count(*) billionaires
 from billionaires_dataset
 where state is not null
 group by state with rollup
 order by billionaires desc;
 
+-- Share of the country's GDP
 select country, sum(finalWorth) billionaires_wealth,
 cast(replace(substring(gdp_country, 2), ',', '') as double) gdp_country,
 round((sum(finalWorth)/cast(replace(substring(gdp_country, 2), ',', '') as double))*100, 8) share_of_country_gdp
