@@ -603,3 +603,280 @@ FROM [SacoLogsSatProject].[dbo].['06-01 (2)']
 
 -- It is important to mention that since employees' personal information is confidential, the public version of the dashboard will only contain EMPLEADO_UC
 -- to identify each employee
+
+
+------------------------------------------------------------------------------------------------------------------------------
+-- Cleaning values with TIEMPO_CONEXION > allowed (employees were allowed to connect for up to: 4 hours in Jan and 5 hours in the next months)
+
+UPDATE SacoLogsSatProject.dbo.['06-01']
+SET TIEMPO_CONEXION = 4
+WHERE TIEMPO_CONEXION > 4
+
+UPDATE SacoLogsSatProject.dbo.['06-01 (2)']
+SET TIEMPO_CONEXION = 4
+WHERE TIEMPO_CONEXION > 4
+
+UPDATE SacoLogsSatProject.dbo.['20-01']
+SET TIEMPO_CONEXION = 4
+WHERE TIEMPO_CONEXION > 4
+
+UPDATE SacoLogsSatProject.dbo.['27-01']
+SET TIEMPO_CONEXION = 4
+WHERE TIEMPO_CONEXION > 4
+
+UPDATE SacoLogsSatProject.dbo.['03-02']
+SET TIEMPO_CONEXION = 5
+WHERE TIEMPO_CONEXION > 5
+
+UPDATE SacoLogsSatProject.dbo.['10-02']
+SET TIEMPO_CONEXION = 5
+WHERE TIEMPO_CONEXION > 5
+
+UPDATE SacoLogsSatProject.dbo.['17-02']
+SET TIEMPO_CONEXION = 5
+WHERE TIEMPO_CONEXION > 5
+
+UPDATE SacoLogsSatProject.dbo.['24-02']
+SET TIEMPO_CONEXION = 5
+WHERE TIEMPO_CONEXION > 5
+
+UPDATE SacoLogsSatProject.dbo.['02-03']
+SET TIEMPO_CONEXION = 5
+WHERE TIEMPO_CONEXION > 5
+
+UPDATE SacoLogsSatProject.dbo.['09-03']
+SET TIEMPO_CONEXION = 5
+WHERE TIEMPO_CONEXION > 5
+
+UPDATE SacoLogsSatProject.dbo.['16-03']
+SET TIEMPO_CONEXION = 5
+WHERE TIEMPO_CONEXION > 5
+
+UPDATE SacoLogsSatProject.dbo.['23-03']
+SET TIEMPO_CONEXION = 5
+WHERE TIEMPO_CONEXION > 5
+
+UPDATE SacoLogsSatProject.dbo.['30-03']
+SET TIEMPO_CONEXION = 5
+WHERE TIEMPO_CONEXION > 5
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+-- Correcting duplicate values for the employee 'Palomino Cueva, Katherine Lucia'
+
+-- Updating Employees table
+UPDATE SacoLogsSatProject.dbo.Employees
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+-- Updating tables ['06-01'], ['06-01 (2)'], ['20-01'], ['27-01'], ['03-02'], ['10-02']
+-- Changing column [NOMBRE Y APELLIDOS] since the employee only appears once within those tables
+UPDATE SacoLogsSatProject.dbo.['06-01']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+UPDATE SacoLogsSatProject.dbo.['06-01 (2)']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+UPDATE SacoLogsSatProject.dbo.['20-01']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+UPDATE SacoLogsSatProject.dbo.['27-01']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+UPDATE SacoLogsSatProject.dbo.['03-02']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+UPDATE SacoLogsSatProject.dbo.['10-02']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+-- Updating table ['17-02']
+-- Multiple changes since the employee appears twice within the table
+-- Since connection was registered for EMPLEADO_UC = 'E025' (row that contains wrong employee's department information):
+-- Setting DEPARTAMENTO = 'Comercial'
+UPDATE SacoLogsSatProject.dbo.['17-02']
+SET DEPARTAMENTO = 'Comercial'
+WHERE EMPLEADO_UC = 'E025'
+
+-- Changing EMPLEADO_UC = 'E025' to be EMPLEADO_UC = 'E027'
+UPDATE SacoLogsSatProject.dbo.['17-02']
+SET EMPLEADO_UC = 'E027'
+WHERE EMPLEADO_UC = 'E025'
+
+-- Deleting row with no registered connection (EMPLEADO_UC = 'E027' AND SacoLogsSatProject.dbo.['17-02'].[¿SE CONECTÓ?] = 'NO')
+-- Conserving row with EMPLEADO_UC = 'E027' AND SacoLogsSatProject.dbo.['17-02'].[¿SE CONECTÓ?] = 'SÍ'
+DELETE
+FROM SacoLogsSatProject.dbo.['17-02']
+WHERE EMPLEADO_UC = 'E027' AND SacoLogsSatProject.dbo.['17-02'].[¿SE CONECTÓ?] = 'NO'
+
+
+-- Updating tables ['24-02'], ['02-03'], ['09-03'], ['16-03'], ['23-03'], ['30-03']
+-- Multiple changes since the employee appears twice within the table
+-- Since connection was registered for EMPLEADO_UC = 'E027' (row that contains incomplete employee's names):
+-- Updating [NOMBRE Y APELLIDOS] with complete names and deleting row with EMPLEADO_UC = 'E025' (wrong employee's department information)
+UPDATE SacoLogsSatProject.dbo.['24-02']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+DELETE
+FROM SacoLogsSatProject.dbo.['24-02']
+WHERE EMPLEADO_UC = 'E025'
+
+UPDATE SacoLogsSatProject.dbo.['02-03']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+DELETE
+FROM SacoLogsSatProject.dbo.['02-03']
+WHERE EMPLEADO_UC = 'E025'
+
+UPDATE SacoLogsSatProject.dbo.['09-03']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+DELETE
+FROM SacoLogsSatProject.dbo.['09-03']
+WHERE EMPLEADO_UC = 'E025'
+
+UPDATE SacoLogsSatProject.dbo.['16-03']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+DELETE
+FROM SacoLogsSatProject.dbo.['16-03']
+WHERE EMPLEADO_UC = 'E025'
+
+UPDATE SacoLogsSatProject.dbo.['23-03']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+DELETE
+FROM SacoLogsSatProject.dbo.['23-03']
+WHERE EMPLEADO_UC = 'E025'
+
+UPDATE SacoLogsSatProject.dbo.['30-03']
+SET [NOMBRE Y APELLIDOS] = 'Palomino Cueva, Katherine Lucia'
+WHERE EMPLEADO_UC = 'E027'
+
+DELETE
+FROM SacoLogsSatProject.dbo.['30-03']
+WHERE EMPLEADO_UC = 'E025'
+
+
+
+-- Deleting EMPLEADO_UC = 'E025' in Employees table
+DELETE
+FROM SacoLogsSatProject.dbo.Employees
+WHERE EMPLEADO_UC = 'E025'
+
+SELECT *
+FROM SacoLogsSatProject.dbo.['30-03']
+
+----------------------------------------------------------------------------------------------------------------
+-- Changing department values for employees who now are part of Ventas department
+
+-- Employees table
+SELECT *
+FROM SacoLogsSatProject.dbo.Employees
+
+UPDATE SacoLogsSatProject.dbo.Employees
+SET DEPARTAMENTO = 'Ventas'
+WHERE EMPLEADO_UC = 'E003'
+
+UPDATE SacoLogsSatProject.dbo.Employees
+SET DEPARTAMENTO = 'Ventas'
+WHERE EMPLEADO_UC = 'E004'
+
+UPDATE SacoLogsSatProject.dbo.Employees
+SET DEPARTAMENTO = 'Ventas'
+WHERE EMPLEADO_UC = 'E024'
+
+-- The other tables
+SELECT b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['06-01'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['06-01']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['06-01'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['06-01 (2)']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['06-01 (2)'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['20-01']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['20-01'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['27-01']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['27-01'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['03-02']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['03-02'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['10-02']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['10-02'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['17-02']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['17-02'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['24-02']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['24-02'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['02-03']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['02-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['09-03']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['09-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['16-03']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['16-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['23-03']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['23-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['30-03']
+SET DEPARTAMENTO = b.DEPARTAMENTO
+FROM SacoLogsSatProject.dbo.['30-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
