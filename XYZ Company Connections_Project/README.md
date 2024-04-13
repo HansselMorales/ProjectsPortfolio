@@ -9,16 +9,16 @@ The client, a Spanish-speaking, Peruvian branch of a multinational German compan
 An interactive Power BI dashboard visualizing key metrics, including:
 
 ##### General Dashboard
-![image](https://github.com/HansselMorales/ProjectsPortfolio/assets/122589585/46dc02cc-f3e8-4b98-800c-c4055f881840)
+![image](https://github.com/HansselMorales/ProjectsPortfolio/assets/122589585/f21b57ed-7344-4724-a106-c430bf0ed76f)
 
 ##### Jan2024 Dashboard
-![image](https://github.com/HansselMorales/ProjectsPortfolio/assets/122589585/1eed25d5-5afa-4361-8bf4-eb37643be911)
+![image](https://github.com/HansselMorales/ProjectsPortfolio/assets/122589585/64c9f4cc-f97a-4f27-988e-e0bd6e75cc06)
 
 ##### Feb2024 Dashboard
-![image](https://github.com/HansselMorales/ProjectsPortfolio/assets/122589585/b7566e34-d49b-4d61-a041-df6a8c0ba0df)
+![image](https://github.com/HansselMorales/ProjectsPortfolio/assets/122589585/c8747c6b-80e8-4be3-9498-7e409e12b844)
 
 ##### Mar2024 Dashboard
-![image](https://github.com/HansselMorales/ProjectsPortfolio/assets/122589585/de9e1069-d5bb-4c96-9362-5dc5222c46c1)
+![image](https://github.com/HansselMorales/ProjectsPortfolio/assets/122589585/1d3a9274-30d6-478a-a533-9504f3161b31)
 
 
 
