@@ -880,3 +880,297 @@ SET DEPARTAMENTO = b.DEPARTAMENTO
 FROM SacoLogsSatProject.dbo.['30-03'] a
 JOIN SacoLogsSatProject.dbo.Employees b
 ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+----------------------------------------------------------------------------------------------------------------
+
+-- APRIL DATA UPDATES
+
+SELECT *
+FROM SacoLogsSatProject.dbo.['06-04']
+
+
+
+-- Checking out values in NOMBRE Y APELLIDOS column that have changed
+SELECT *
+FROM SacoLogsSatProject.dbo.['06-04'] a
+FULL JOIN SacoLogsSatProject.dbo.Employees b
+ON a.[NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+--WHERE b.[NOMBRE Y APELLIDOS] IS NULL
+
+
+-- Updating values in NOMBRE Y APELLIDO column on Employees table (some previous employees' full name values were not complete)
+SELECT *
+FROM Employees
+
+UPDATE SacoLogsSatProject.dbo.Employees
+SET [NOMBRE Y APELLIDOS] = 'Cuentas Sachay, Claudia Raquel'
+WHERE EMPLEADO_UC = 'E009'
+
+UPDATE SacoLogsSatProject.dbo.Employees
+SET [NOMBRE Y APELLIDOS] = 'Diaz Diaz, Dimberly Diane'
+WHERE EMPLEADO_UC = 'E012'
+
+UPDATE SacoLogsSatProject.dbo.Employees
+SET [NOMBRE Y APELLIDOS] = 'Garay Rodriguez, Jessica Katherine'
+WHERE EMPLEADO_UC = 'E015'
+
+UPDATE SacoLogsSatProject.dbo.Employees
+SET [NOMBRE Y APELLIDOS] = 'Rodriguez Gonzaga, Rosita Angelica'
+WHERE EMPLEADO_UC = 'E033'
+
+-- Adding new employees to Employees table
+INSERT INTO Employees
+VALUES ('E038', 'Flores Carita, Christian', 'Operaciones Impo')
+
+
+-- Adding new columns TIEMPO_CONEXION to April tables
+ALTER TABLE SacoLogsSatProject.dbo.['06-04']
+ADD TIEMPO_CONEXION float
+
+ALTER TABLE SacoLogsSatProject.dbo.['13-04']
+ADD TIEMPO_CONEXION float
+
+ALTER TABLE SacoLogsSatProject.dbo.['20-04']
+ADD TIEMPO_CONEXION float
+
+ALTER TABLE SacoLogsSatProject.dbo.['27-04']
+ADD TIEMPO_CONEXION float
+
+
+-- Populating TIEMPO_CONEXION column with decimal-formatted values
+UPDATE [SacoLogsSatProject].[dbo].['06-04']
+SET TIEMPO_CONEXION = ROUND(
+						CASE
+							WHEN
+								CAST(REPLACE(
+								(CASE
+									WHEN REPLACE([TIEMPO DE CONEXIÓN], ' ','.') LIKE '%m'THEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),2)
+									ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),1) END),
+									'h','') AS int) IS NULL THEN 0
+							ELSE 
+								CAST(REPLACE(
+								(CASE
+								WHEN REPLACE([TIEMPO DE CONEXIÓN], ' ','.') LIKE '%m'THEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),2)
+								ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),1) END),
+								'h','') AS int) END
+								+
+							CAST( REPLACE( CASE
+								WHEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN],' ','.'),1) LIKE '%h' THEN '0'
+								ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN],' ','.'),1) END,'m','') AS INT)*1.0/60,2)
+
+
+UPDATE [SacoLogsSatProject].[dbo].['13-04']
+SET TIEMPO_CONEXION = ROUND(
+						CASE
+							WHEN
+								CAST(REPLACE(
+								(CASE
+									WHEN REPLACE([TIEMPO DE CONEXIÓN], ' ','.') LIKE '%m'THEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),2)
+									ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),1) END),
+									'h','') AS int) IS NULL THEN 0
+							ELSE 
+								CAST(REPLACE(
+								(CASE
+								WHEN REPLACE([TIEMPO DE CONEXIÓN], ' ','.') LIKE '%m'THEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),2)
+								ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),1) END),
+								'h','') AS int) END
+								+
+							CAST( REPLACE( CASE
+								WHEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN],' ','.'),1) LIKE '%h' THEN '0'
+								ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN],' ','.'),1) END,'m','') AS INT)*1.0/60,2)
+
+
+UPDATE [SacoLogsSatProject].[dbo].['20-04']
+SET TIEMPO_CONEXION = ROUND(
+						CASE
+							WHEN
+								CAST(REPLACE(
+								(CASE
+									WHEN REPLACE([TIEMPO DE CONEXIÓN], ' ','.') LIKE '%m'THEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),2)
+									ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),1) END),
+									'h','') AS int) IS NULL THEN 0
+							ELSE 
+								CAST(REPLACE(
+								(CASE
+								WHEN REPLACE([TIEMPO DE CONEXIÓN], ' ','.') LIKE '%m'THEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),2)
+								ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),1) END),
+								'h','') AS int) END
+								+
+							CAST( REPLACE( CASE
+								WHEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN],' ','.'),1) LIKE '%h' THEN '0'
+								ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN],' ','.'),1) END,'m','') AS INT)*1.0/60,2)
+
+
+UPDATE [SacoLogsSatProject].[dbo].['27-04']
+SET TIEMPO_CONEXION = ROUND(
+						CASE
+							WHEN
+								CAST(REPLACE(
+								(CASE
+									WHEN REPLACE([TIEMPO DE CONEXIÓN], ' ','.') LIKE '%m'THEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),2)
+									ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),1) END),
+									'h','') AS int) IS NULL THEN 0
+							ELSE 
+								CAST(REPLACE(
+								(CASE
+								WHEN REPLACE([TIEMPO DE CONEXIÓN], ' ','.') LIKE '%m'THEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),2)
+								ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN], ' ','.'),1) END),
+								'h','') AS int) END
+								+
+							CAST( REPLACE( CASE
+								WHEN PARSENAME(REPLACE([TIEMPO DE CONEXIÓN],' ','.'),1) LIKE '%h' THEN '0'
+								ELSE PARSENAME(REPLACE([TIEMPO DE CONEXIÓN],' ','.'),1) END,'m','') AS INT)*1.0/60,2)
+
+
+-- Adding new column EMPLEADO_UC to April tables
+SELECT b.EMPLEADO_UC
+FROM SacoLogsSatProject.dbo.['06-04'] a
+FULL JOIN SacoLogsSatProject.dbo.Employees b
+ON a.[NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+WHERE a.[NOMBRE Y APELLIDOS] IS NOT NULL
+
+ALTER TABLE SacoLogsSatProject.dbo.['06-04']
+ADD EMPLEADO_UC nvarchar(50)
+
+ALTER TABLE SacoLogsSatProject.dbo.['13-04']
+ADD EMPLEADO_UC nvarchar(50)
+
+ALTER TABLE SacoLogsSatProject.dbo.['20-04']
+ADD EMPLEADO_UC nvarchar(50)
+
+ALTER TABLE SacoLogsSatProject.dbo.['27-04']
+ADD EMPLEADO_UC nvarchar(50)
+
+
+-- Populating EMPLEADO_UC column
+UPDATE SacoLogsSatProject.dbo.['06-04']
+SET EMPLEADO_UC = b.EMPLEADO_UC
+FROM SacoLogsSatProject.dbo.['06-04'] a
+FULL JOIN SacoLogsSatProject.dbo.Employees b
+ON a.[NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+WHERE a.[NOMBRE Y APELLIDOS] IS NOT NULL
+
+UPDATE SacoLogsSatProject.dbo.['13-04']
+SET EMPLEADO_UC = b.EMPLEADO_UC
+FROM SacoLogsSatProject.dbo.['13-04'] a
+FULL JOIN SacoLogsSatProject.dbo.Employees b
+ON a.[NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+WHERE a.[NOMBRE Y APELLIDOS] IS NOT NULL
+
+UPDATE SacoLogsSatProject.dbo.['20-04']
+SET EMPLEADO_UC = b.EMPLEADO_UC
+FROM SacoLogsSatProject.dbo.['20-04'] a
+FULL JOIN SacoLogsSatProject.dbo.Employees b
+ON a.[NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+WHERE a.[NOMBRE Y APELLIDOS] IS NOT NULL
+
+UPDATE SacoLogsSatProject.dbo.['27-04']
+SET EMPLEADO_UC = b.EMPLEADO_UC
+FROM SacoLogsSatProject.dbo.['27-04'] a
+FULL JOIN SacoLogsSatProject.dbo.Employees b
+ON a.[NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+WHERE a.[NOMBRE Y APELLIDOS] IS NOT NULL
+
+SELECT *
+FROM SacoLogsSatProject.dbo.['27-04']
+
+
+-- Dropping unused colummns
+ALTER TABLE SacoLogsSatProject.dbo.['06-04']
+DROP COLUMN COMENTARIOS, [N°], [TIEMPO DE CONEXIÓN]
+
+ALTER TABLE SacoLogsSatProject.dbo.['13-04']
+DROP COLUMN COMENTARIOS, [N°], [TIEMPO DE CONEXIÓN]
+
+ALTER TABLE SacoLogsSatProject.dbo.['20-04']
+DROP COLUMN COMENTARIOS, [N°], [TIEMPO DE CONEXIÓN]
+
+ALTER TABLE SacoLogsSatProject.dbo.['27-04']
+DROP COLUMN COMENTARIOS, [N°], [TIEMPO DE CONEXIÓN]
+
+
+
+-- Updating values in NOMBRE Y APELLIDO column on previous tables (some previous employees' full name values were not complete)
+SELECT b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['30-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+
+UPDATE SacoLogsSatProject.dbo.['06-01']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['06-01'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['06-01 (2)']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['06-01 (2)'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['20-01']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['20-01'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['27-01']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['27-01'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['03-02']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['03-02'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['10-02']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['10-02'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['17-02']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['17-02'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['24-02']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['24-02'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['02-03']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['02-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['09-03']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['09-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['16-03']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['16-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['23-03']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['23-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
+
+UPDATE SacoLogsSatProject.dbo.['30-03']
+SET [NOMBRE Y APELLIDOS] = b.[NOMBRE Y APELLIDOS]
+FROM SacoLogsSatProject.dbo.['30-03'] a
+JOIN SacoLogsSatProject.dbo.Employees b
+ON a.EMPLEADO_UC = b.EMPLEADO_UC
